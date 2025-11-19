@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dorksense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=VT323&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'acid-green': '#ccff00',
+                        'hot-pink': '#ff0099',
+                        'electric-blue': '#00f0ff',
+                        'deep-purple': '#6600cc',
+                        'off-white': '#f0f0f0',
+                        'raw-black': '#111111'
+                    },
+                    fontFamily: {
+                        'grotesk': ['"Space Grotesk"', 'sans-serif'],
+                        'mono-pixel': ['"VT323"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 0px 0px #111111',
+                        'neo-hover': '4px 4px 0px 0px #111111',
+                        'neo-sm': '4px 4px 0px 0px #111111',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Cursor */
+        body {
+            cursor: none;
+            overflow-x: hidden;
+        }
+        .cursor-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            mix-blend-mode: difference;
+            border-radius: 2px;
+        }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) rotate(2deg);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+
+        /* Glitch Effect on Hover */
+        .glitch-hover:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        
+        /* Selection Color */
+        ::selection {
+            background: #ff0099;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-off-white text-raw-black font-grotesk antialiased selection:bg-hot-pink selection:text-white">
+
+    <div class="cursor-dot" id="cursor"></div>
+
+    <nav class="fixed top-0 w-full z-50 p-4 mix-blend-hard-light">
+        <div class="flex justify-between items-center max-w-7xl mx-auto bg-white border-4 border-raw-black p-4 shadow-neo">
+            <div class="text-3xl font-bold tracking-tighter uppercase glitch-hover cursor-pointer">
+                DORKSENSE_v1.0
+            </div>
+            <div class="hidden md:flex gap-6 font-mono-pixel text-2xl">
+                <a href="#" class="hover:underline decoration-4 decoration-hot-pink underline-offset-4">WORKS</a>
+                <a href="#" class="hover:underline decoration-4 decoration-acid-green underline-offset-4">CHAOS</a>
+                <a href="#" class="hover:underline decoration-4 decoration-electric-blue underline-offset-4">CONTACT</a>
+            </div>
+            <button class="md:hidden font-bold text-xl">[MENU]</button>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex flex-col justify-center items-center pt-20 relative overflow-hidden bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiLz48L3N2Zz4=')]">
+        
+        <div class="absolute top-32 left-10 w-24 h-24 bg-acid-green border-4 border-raw-black shadow-neo rotate-12 animate-bounce"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-electric-blue border-4 border-raw-black rounded-full shadow-neo -rotate-6"></div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="inline-block bg-hot-pink border-4 border-raw-black px-4 py-1 mb-6 shadow-neo-sm rotate-[-2deg] reveal">
+                <span class="font-mono-pixel text-white text-2xl uppercase">Warning: Extreme Logic Inside</span>
+            </div>
+            
+            <h1 class="text-7xl md:text-9xl font-black leading-[0.8] tracking-tighter mb-8 reveal delay-100 uppercase">
+                Make<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-hot-pink to-deep-purple stroke-black" style="-webkit-text-stroke: 3px black;">Non</span>sense
+            </h1>
+            
+            <p class="text-xl md:text-2xl font-medium max-w-2xl mx-auto mb-12 border-l-8 border-acid-green pl-6 text-left bg-white p-4 shadow-neo reveal delay-200">
+                We engineer digital brutality. We break grids, burn padding, and serve raw HTML logic to the masses. Don't blink.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center reveal delay-300">
+                <button class="px-8 py-4 bg-raw-black text-white font-bold text-xl border-4 border-raw-black shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all uppercase">
+                    Start Chaos
+                </button>
+                <button class="px-8 py-4 bg-acid-green text-raw-black font-bold text-xl border-4 border-raw-black shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all uppercase">
+                    Read Manifest
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="border-y-4 border-raw-black bg-hot-pink py-6 rotate-1 scale-105 transform origin-left mb-20">
+        <div class="marquee-container font-mono-pixel text-4xl md:text-5xl font-bold text-white uppercase">
+            <div class="marquee-content">
+                DORKSENSE /// NO COOKIES /// JUST RAW DATA /// BRUTALISM IS NOT DEAD /// IT JUST MOVED TO THE SUBURBS /// SYSTEM ERROR /// PLEASE REFRESH /// DORKSENSE /// NO COOKIES /// JUST RAW DATA /// BRUTALISM IS NOT DEAD ///
+            </div>
+        </div>
+    </div>
+
+    <section class="container mx-auto px-4 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            
+            <article class="group bg-white border-4 border-raw-black p-8 shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all duration-200 reveal">
+                <div class="w-16 h-16 bg-acid-green border-4 border-raw-black mb-6 flex items-center justify-center text-3xl font-bold shadow-neo-sm">01</div>
+                <h3 class="text-4xl font-bold mb-4 uppercase decoration-wavy underline decoration-hot-pink">Raw Code</h3>
+                <p class="font-mono-pixel text-2xl leading-tight">
+                    We don't use wrappers. We wrap the wrappers in scrap metal and throw them into the ocean. Pure efficiency.
+                </p>
+            </article>
+
+            <article class="group bg-electric-blue border-4 border-raw-black p-8 shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all duration-200 reveal delay-100">
+                <div class="w-16 h-16 bg-hot-pink border-4 border-raw-black mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-neo-sm">02</div>
+                <h3 class="text-4xl font-bold mb-4 uppercase bg-white inline-block px-2">Loud UI</h3>
+                <p class="font-mono-pixel text-2xl leading-tight">
+                    Subtlety is a bug. If the user isn't slightly intimidated by the interface, we haven't done our job correctly.
+                </p>
+            </article>
+
+            <article class="group bg-white border-4 border-raw-black p-8 shadow-neo hover:shadow-neo-hover hover:translate-x-1 hover:translate-y-1 transition-all duration-200 reveal delay-200">
+                <div class="w-16 h-16 bg-deep-purple border-4 border-raw-black mb-6 flex items-center justify-center text-3xl font-bold text-white shadow-neo-sm">03</div>
+                <h3 class="text-4xl font-bold mb-4 uppercase decoration-double underline decoration-acid-green">Speed</h3>
+                <p class="font-mono-pixel text-2xl leading-tight">
+                    Optimized for the apocalypse. Our sites load faster than you can say "CSS is render blocking".
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="bg-raw-black text-off-white py-32 overflow-hidden relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="border-4 border-off-white p-8 md:p-16 relative reveal">
+                
+                <div class="absolute -top-6 -right-6 bg-hot-pink text-black font-bold px-4 py-2 border-4 border-off-white rotate-12">
+                    NEW DROP
+                </div>
+
+                <h2 class="text-6xl md:text-8xl font-black mb-8 uppercase text-center leading-none">
+                    Are you<br>
+                    <span class="text-acid-green">Confused?</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="font-mono-pixel text-2xl border-r-0 md:border-r-4 border-off-white pr-4">
+                        [Log]: User confusion level rising.<br>
+                        [Log]: Aesthetic appreciation detected.<br>
+                        [Log]: Initiating protocol "BUY_NOW".
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <label class="text-xl font-bold uppercase">Input your soul (Email):</label>
+                        <div class="flex">
+                            <input type="email" placeholder="human@earth.com" class="w-full p-4 bg-transparent border-4 border-off-white text-white placeholder-gray-500 focus:bg-off-white focus:text-black outline-none transition-colors">
+                            <button class="bg-acid-green text-black font-bold px-8 border-y-4 border-r-4 border-off-white hover:bg-hot-pink transition-colors">
+                                ->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-acid-green pt-20 pb-10 border-t-4 border-raw-black">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-16">
+                <div>
+                    <h2 class="text-6xl font-bold tracking-tighter mb-4">DORKSENSE</h2>
+                    <p class="font-bold text-xl">Kuala Lumpur, MY (Digital Void)</p>
+                </div>
+                <div class="flex gap-4 flex-wrap">
+                    <a href="#" class="px-6 py-2 bg-white border-4 border-raw-black shadow-neo font-bold hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">INSTAGRAM</a>
+                    <a href="#" class="px-6 py-2 bg-white border-4 border-raw-black shadow-neo font-bold hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">TWITTER</a>
+                    <a href="#" class="px-6 py-2 bg-white border-4 border-raw-black shadow-neo font-bold hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">GITHUB</a>
+                </div>
+            </div>
+            
+            <div class="border-t-4 border-raw-black pt-6 flex justify-between items-center font-mono-pixel text-xl">
+                <p>&copy; 2025 DORKSENSE. All rights reserved (maybe).</p>
+                <p>EST. 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            cursor.style.backgroundColor = '#ff0099';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.backgroundColor = '#111';
+        });
+
+        // Hover effects on clickable items to change cursor
+        const clickables = document.querySelectorAll('a, button, input');
+        clickables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.mixBlendMode = 'difference';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+            });
+        });
+
+        // Scroll Reveal Logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
